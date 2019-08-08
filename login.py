@@ -80,7 +80,12 @@ def main():
                 print("[SIGNED OUT]")
                 try:
                     print("[SIGNING IN] Parsing the password...")
-                    parsePassword = getParsedPassword(sys.argv[2])
+                    parsePassword = sys.argv[2]
+                    try:
+                        # parse the password if required
+                        parsePassword = getParsedPassword(sys.argv[2])
+                    except Exception as e:
+                        pass
                     print("[SIGNING IN] Submitting the account...")
                     postLogin(sys.argv[1], parsePassword)
                     print("[SIGNED IN] Success")
